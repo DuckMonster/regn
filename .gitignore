@@ -1,0 +1,6 @@
+.vs/
+bin/
+build/
+regn.sublime-workspace
+regn.vcxproj.filter
+regn.vcxproj.user

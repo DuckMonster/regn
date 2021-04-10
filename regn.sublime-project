@@ -1,0 +1,36 @@
+{
+	"folders":
+	[
+		{
+			"name": "Root",
+			"path": "."
+		},
+		{
+			"name": "Windows Source",
+			"path": "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\um"
+		}
+	],
+
+	"settings": 
+	{
+		"ms_build_configs":
+		[
+			{
+				"name": "Debug",
+				"outputs":
+				[
+					{
+						"path": "bin/Debug/regn.exe",
+						"dir": ".",
+					}
+				]
+			},
+			{
+				"name": "Release",
+				"outputs":
+				[
+				]
+			},
+		]
+	}
+}
