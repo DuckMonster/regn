@@ -1,6 +1,6 @@
 #include "process.h"
-#include "select_process.h"
-#include "debug_process.h"
+#include "process_select.h"
+#include "process_debug.h"
 #include "console.h"
 
 int main()

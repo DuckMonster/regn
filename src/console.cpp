@@ -15,16 +15,20 @@ void console_init()
 
 	console_mode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
 	SetConsoleMode(output_handle, console_mode);
+
+	// Always disable blinking
+	printf(ESC "?12l");
+	console_hide_cursor();
 }
 
 void console_set_cursor_pos(int x, int y)
 {
-	printf(ESC "%d;%dH", x, y);
+	printf(ESC "%d;%dH", y + 1, x + 1);
 }
 
 void console_set_cursor_col(int x)
 {
-	printf(ESC "%dG", x);
+	printf(ESC "%dG", x + 1);
 }
 
 void console_clear()
@@ -35,6 +39,16 @@ void console_clear()
 void console_clear_line()
 {
 	printf(ESC "2K");
+}
+
+void console_show_cursor()
+{
+	printf(ESC "?25h");
+}
+
+void console_hide_cursor()
+{
+	printf(ESC "?25l");
 }
 
 void console_reset_clr()
@@ -78,6 +92,7 @@ Key console_get_key()
 		result.key_code = key_event->wVirtualKeyCode;
 		result.scan_code = key_event->wVirtualScanCode;
 		result.character = key_event->uChar.AsciiChar;
+		result.wcharacter = key_event->uChar.UnicodeChar;
 
 		return result;
 	}

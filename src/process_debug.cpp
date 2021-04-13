@@ -1,7 +1,7 @@
-#include "debug_process.h"
+#include "process_debug.h"
 #include <windows.h>
 #include <stdio.h>
-#include "input.h"
+#include "console.h"
 
 void flush_events()
 {
@@ -28,29 +28,8 @@ void continue_process(Process* proc)
 
 void debug_process(Process* proc)
 {
-	do
-	{
-		flush_events();
-
-		printf("(B)reak, (C)ontinue: ");
-		char option = input_get_char();
-		printf("\n");
-
-		switch(option)
-		{
-			case 'b':
-			case 'B':
-				break_process(proc);
-				break;
-
-			case 'c':
-			case 'C':
-				continue_process(proc);
-				break;
-
-			default:
-				printf("Unknown command '%c'\n", option);
-				break;
-		}
-	} while(true);
+	// Start debugging
+	DebugActiveProcess(proc->id);
+	while(true)
+		console_get_key();
 }
