@@ -15,6 +15,12 @@ enum Console_Color
 
 void console_init();
 void console_set_cursor_pos(int x, int y);
+void console_set_cursor_col(int x);
+
+void console_clear();
+void console_clear_line();
+
+void console_reset_clr();
 void console_set_fg_clr(int clr, bool bright=false);
 void console_set_bg_clr(int clr, bool bright=false);
 
